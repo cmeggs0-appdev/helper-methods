@@ -16,7 +16,7 @@ class MoviesController < ApplicationController
       end
 
       format.html do
-        render({ :template => "movies/index.html.erb" })
+        render template: "movies/index.html.erb"
       end
     end
   end
@@ -28,7 +28,7 @@ class MoviesController < ApplicationController
 
     @the_movie = matching_movies.first
 
-    render({ :template => "movies/show.html.erb" })
+    render template: "movies/show.html.erb"
   end
 
   def create
@@ -51,7 +51,7 @@ class MoviesController < ApplicationController
 
     @the_movie = matching_movies.first
 
-    render({ :template => "movies/edit.html.erb" })
+    render template: "movies/edit.html.erb"
   end
 
   def update
