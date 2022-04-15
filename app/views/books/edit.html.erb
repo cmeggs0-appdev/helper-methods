@@ -11,10 +11,16 @@
   </div>
 
   <div>
+    <%= label_tag :author %>
+    <%= text_field_tag :author, @book.author %>
+  </div>
+
+  <div>
     <%= label_tag :description %>
     <%= text_area_tag :description, @book.description, id: "description", rows: 3 %>
   </div>
 
   <%= button_tag "Update book" %>
 <% end %>
+
 

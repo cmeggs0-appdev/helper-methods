@@ -1,10 +1,10 @@
 class BooksController < ApplicationController
   def new
-    @book = Books.new
+    @book = Book.new
   end
 
   def index
-    matching_books = Books.all
+    matching_books = Book.all
 
     @books = matching_books.order( created_at: :desc )
 
@@ -18,12 +18,12 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Books.find(params.fetch(:id))
+    @book = Book.find(params.fetch(:id))
   end
 
   def create
-    book_attributes = params.require(:book).permit(:title, :description)
-    @book = Books.new(book_attributes)
+    book_attributes = params.require(:book).permit(:title, :description, :author)
+    @book = Book.new(book_attributes)
 
     if @book.valid?
       @book.save
@@ -34,16 +34,15 @@ class BooksController < ApplicationController
   end
 
   def edit
-    @book = Books.find(params.fetch(:id))
+    @book = Book.find(params.fetch(:id))
   end
 
   def update
-    
-    
-    @book = Books.find(params.fetch(:id))
+    @book = Book.find(params.fetch(:id))
 
     @book.title = params.fetch("title")
     @book.description = params.fetch("description")
+    @book.author = params.fetch("author")
 
     if @book.valid?
       @book.save
@@ -54,7 +53,7 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book = Books.find(params.fetch(:id))
+    @book = Book.find(params.fetch(:id))
 
     @book.destroy
 
