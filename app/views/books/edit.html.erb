@@ -1,0 +1,20 @@
+<h1>Edit book</h1>
+
+<% @book.errors.full_messages.each do |message| %>
+  <p style="color: red;"><%= message %></p>
+<% end %>
+
+<%= form_with(url: book_path(@book), method: :patch) do %>
+  <div>
+    <%= label_tag :title %>
+    <%= text_field_tag :title, @book.title %>
+  </div>
+
+  <div>
+    <%= label_tag :description %>
+    <%= text_area_tag :description, @book.description, id: "description", rows: 3 %>
+  </div>
+
+  <%= button_tag "Update book" %>
+<% end %>
+
