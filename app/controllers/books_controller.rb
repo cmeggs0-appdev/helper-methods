@@ -4,9 +4,7 @@ class BooksController < ApplicationController
   end
 
   def index
-    matching_books = Book.all
-
-    @books = matching_books.order( created_at: :desc )
+    @books = Book.order( created_at: :desc )
 
     respond_to do |format|
       format.json do

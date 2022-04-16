@@ -4,9 +4,7 @@ class MoviesController < ApplicationController
   end
 
   def index
-    matching_movies = Movie.all
-
-    @movies = matching_movies.order( created_at: :desc )
+    @movies = Movie.order( created_at: :desc )
 
     respond_to do |format|
       format.json do
